@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.nagarro.nagp.dbflights.dto.FlightSearchParameters;
 import com.nagarro.nagp.dbflights.model.Flight;
 import com.nagarro.nagp.dbflights.repository.FlightRepository;
 
@@ -18,9 +17,8 @@ public class FlightRepositoryImpl implements FlightRepository {
 	}
 
 	@Override
-	public List<Flight> getFlightsBySourceDestinationDate(FlightSearchParameters flightParams) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Flight> getAllFlights() {
+		return flights;
 	}
 
 	@Override
