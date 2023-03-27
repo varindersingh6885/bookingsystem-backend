@@ -1,12 +1,14 @@
 package com.nagarro.nagp.identityservice.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.nagarro.nagp.identityservice.dto.UserCredentials;
 import com.nagarro.nagp.identityservice.model.User;
 import com.nagarro.nagp.identityservice.repository.UserRepository;
 import com.nagarro.nagp.identityservice.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
