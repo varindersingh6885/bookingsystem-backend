@@ -18,8 +18,6 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	@Override
 	public User addUser(User user) {
-		// todo - validate all fields are present
-		
 		users.put(user.getUsername(), user);
 		return user;
 	}
