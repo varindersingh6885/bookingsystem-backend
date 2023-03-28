@@ -20,6 +20,7 @@ import com.nagarro.nagp.flightsservice.service.FlightService;
 @RequestMapping("/flights")
 public class FlightController {
 	
+	
 	@Autowired
 	private FlightService flightService;
 	
@@ -47,4 +48,6 @@ public class FlightController {
 		Flight f = flightService.getFlightByFlightId(flightId);
 		return f;
 	}
+	
+	
 }
