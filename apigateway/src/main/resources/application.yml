@@ -5,18 +5,18 @@ spring:
  cloud:
    gateway:
      routes:
-       - id: db-flights
-         uri: lb://DB-FLIGHTS
+       - id: flights-service
+         uri: lb://FLIGHTS-SERVICE
          predicates:
            - Path=/flights/**
          filters:
            - AuthenticationFilter
 
 
-       - id: restaurant-service
-         uri: lb://RESTAURANT-SERVICE
+       - id: booking-service
+         uri: lb://BOOKING-SERVICE
          predicates:
-           - Path=/restaurant/**
+           - Path=/booking/**
          filters:
            - AuthenticationFilter
 

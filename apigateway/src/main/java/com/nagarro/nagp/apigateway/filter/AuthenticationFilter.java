@@ -1,16 +1,20 @@
 package com.nagarro.nagp.apigateway.filter;
 
+import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.google.common.net.HttpHeaders;
 import com.nagarro.nagp.apigateway.dto.UserCredentials;
+import com.nagarro.nagp.apigateway.util.JwtUtil;
 
 import reactor.core.publisher.Mono;
 
@@ -20,9 +24,12 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Autowired
     private RouteValidator validator;
 
-        @Autowired
-    private RestTemplate template;
+//        @Autowired
+//    private RestTemplate template;
         
+//    @Autowired
+//    private JwtUtil jwtUtil;
+
     public AuthenticationFilter() {
         super(Config.class);
     }
@@ -41,21 +48,18 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     authHeader = authHeader.substring(7);
                 }
                 try {
-                    //REST call to AUTH service
-//                	String[] credentials = authHeader.split(" ");
-//                	UserCredentials uc = new UserCredentials(credentials[0], credentials[1]);
-//                	System.out.println(uc.getUsername());
-//                    template.postForObject("http://IDENTITY-SERVICE/users/login", uc, String.class);
-                    if(!authHeader.equals("validToken123")) {
-                    	return this.onError(exchange, "Authorization Failed", HttpStatus.UNAUTHORIZED);
-                    }
+//                    //REST call to AUTH service
+                	if(!authHeader.startsWith("validToken123")) {
+                		return this.onError(exchange, "Authorization Failed", HttpStatus.UNAUTHORIZED);
+                	}
+
                 } catch (Exception e) {
-                    System.out.println("invalid access...!");
-                    System.out.println(e.getMessage());
-                    return this.onError(exchange, "Authorization Failed", HttpStatus.UNAUTHORIZED);
+//                    System.out.println("invalid access...!");
+//                    System.out.println(e.getMessage());
+                	  return this.onError(exchange, "Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             }
-        	
+//        	
             return chain.filter(exchange);
         });
     }

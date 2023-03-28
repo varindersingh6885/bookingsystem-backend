@@ -1,10 +1,10 @@
-package com.nagarro.nagp.identityservice;
+package com.nagarro.nagp.dbflights;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DbFlightsApplicationTests {
+class DbFlightsServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

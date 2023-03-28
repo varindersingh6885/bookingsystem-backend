@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.nagarro.nagp</groupId>
-	<artifactId>db-flights</artifactId>
+	<artifactId>db-flights-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>db-flights</name>
-	<description>Flights Database</description>
+	<name>db-flights-service</name>
+	<description>Flights Database Service</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.6</spring-cloud.version>
