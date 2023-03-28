@@ -72,4 +72,14 @@ public class FlightServiceImpl implements FlightService {
 		return flightRepo.getFlightByFlightID(flightId);
 	}
 
+	@Override
+	public Flight updateSeatsStatus(String flightId, List<Integer> seatsToBook, String status) {
+		// TODO Auto-generated method stub
+		Flight f = flightRepo.getFlightByFlightID(flightId);
+		for(Integer seatNumber : seatsToBook) {
+			f.getSeats().get(seatNumber).setStatus(status);
+		}
+		return null;
+	}
+
 }

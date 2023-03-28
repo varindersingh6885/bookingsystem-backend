@@ -5,8 +5,8 @@ spring:
  cloud:
    gateway:
      routes:
-       - id: db-flights
-         uri: lb://DB-FLIGHTS
+       - id: flights-service
+         uri: lb://FLIGHTS-SERVICE
          predicates:
            - Path=/flights/**
          filters:

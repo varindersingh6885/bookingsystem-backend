@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.google.common.net.HttpHeaders;
-import com.nagarro.nagp.apigateway.dto.UserCredentials;
 
 import reactor.core.publisher.Mono;
 
@@ -20,8 +19,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Autowired
     private RouteValidator validator;
 
-        @Autowired
-    private RestTemplate template;
+//        @Autowired
+//    private RestTemplate template;
         
     public AuthenticationFilter() {
         super(Config.class);
