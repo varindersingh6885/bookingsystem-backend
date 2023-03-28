@@ -5,22 +5,26 @@ import java.util.List;
 public class OrderFlight {
 	private String bookingId;
 	private String username;
-	private String amount;
+	private float amount;
 	private String flightId;
 	private List<Integer> seatNumbers;
 	private OrderStatus orderStatus;
+	private String remarks;
 	
 	public OrderFlight() {}
-	public OrderFlight(String username, String bookingId, String amount, String flightId, List<Integer> seatNumbers,
-			OrderStatus orderStatus) {
+	
+	public OrderFlight(String bookingId, String username, float amount, String flightId, List<Integer> seatNumbers,
+			OrderStatus orderStatus, String remarks) {
 		super();
-		this.username = username;
 		this.bookingId = bookingId;
+		this.username = username;
 		this.amount = amount;
 		this.flightId = flightId;
 		this.seatNumbers = seatNumbers;
 		this.orderStatus = orderStatus;
+		this.remarks = remarks;
 	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -33,10 +37,10 @@ public class OrderFlight {
 	public void setBookingId(String bookingId) {
 		this.bookingId = bookingId;
 	}
-	public String getAmount() {
+	public float getAmount() {
 		return amount;
 	}
-	public void setAmount(String amount) {
+	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 	public String getFlightId() {
@@ -56,6 +60,14 @@ public class OrderFlight {
 	}
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 	
 }

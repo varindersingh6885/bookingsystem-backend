@@ -25,7 +25,7 @@ public class FlightServiceImpl implements FlightService {
 				fsp.getDestination() == null && 
 				fsp.getDepartureDate() == null
 		) {
-			return new ArrayList<>();
+			return allFlights;
 		}
 		List<Flight> currentFlights = allFlights;
 		List<Flight> filteredFlights = new ArrayList<>();
