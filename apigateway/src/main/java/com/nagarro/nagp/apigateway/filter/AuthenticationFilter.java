@@ -29,31 +29,31 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Override
     public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
-            if (validator.isSecured.test(exchange.getRequest())) {
-                //header contains token or not
-                if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
-                	return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
-                }
-
-                String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-                if (authHeader != null && authHeader.startsWith("Bearer ")) {
-                    authHeader = authHeader.substring(7);
-                }
-                try {
-                    //REST call to AUTH service
-//                	String[] credentials = authHeader.split(" ");
-//                	UserCredentials uc = new UserCredentials(credentials[0], credentials[1]);
-//                	System.out.println(uc.getUsername());
-//                    template.postForObject("http://IDENTITY-SERVICE/users/login", uc, String.class);
-                    if(!authHeader.equals("validToken123")) {
-                    	return this.onError(exchange, "Authorization Failed", HttpStatus.UNAUTHORIZED);
-                    }
-                } catch (Exception e) {
-                    System.out.println("invalid access...!");
-                    System.out.println(e.getMessage());
-                    return this.onError(exchange, "Authorization Failed", HttpStatus.UNAUTHORIZED);
-                }
-            }
+//            if (validator.isSecured.test(exchange.getRequest())) {
+//                //header contains token or not
+//                if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
+//                	return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
+//                }
+//
+//                String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+//                if (authHeader != null && authHeader.startsWith("Bearer ")) {
+//                    authHeader = authHeader.substring(7);
+//                }
+//                try {
+//                    //REST call to AUTH service
+////                	String[] credentials = authHeader.split(" ");
+////                	UserCredentials uc = new UserCredentials(credentials[0], credentials[1]);
+////                	System.out.println(uc.getUsername());
+////                    template.postForObject("http://IDENTITY-SERVICE/users/login", uc, String.class);
+//                    if(!authHeader.equals("validToken123")) {
+//                    	return this.onError(exchange, "Authorization Failed", HttpStatus.UNAUTHORIZED);
+//                    }
+//                } catch (Exception e) {
+//                    System.out.println("invalid access...!");
+//                    System.out.println(e.getMessage());
+//                    return this.onError(exchange, "Authorization Failed", HttpStatus.UNAUTHORIZED);
+//                }
+//            }
         	
             return chain.filter(exchange);
         });

@@ -1,8 +1,7 @@
 package com.nagarro.nagp.identityservice.controller;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +27,13 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public String getValidToken(@RequestBody UserCredentials uc, HttpServletResponse res) {
-		System.out.println("reached here");
-		return userService.getValidToken(uc, res);
+	public String getValidToken(@RequestBody UserCredentials uc) {
+//		System.out.println("validating user");
+		return userService.getValidToken(uc);
+	}
+	
+	@GetMapping("/hello")
+	public String test() {
+		return "hello world";
 	}
 }

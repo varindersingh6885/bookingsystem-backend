@@ -12,14 +12,6 @@ spring:
          filters:
            - AuthenticationFilter
 
-
-       - id: restaurant-service
-         uri: lb://RESTAURANT-SERVICE
-         predicates:
-           - Path=/restaurant/**
-         filters:
-           - AuthenticationFilter
-
        - id: identity-service
          uri: lb://IDENTITY-SERVICE
          predicates:

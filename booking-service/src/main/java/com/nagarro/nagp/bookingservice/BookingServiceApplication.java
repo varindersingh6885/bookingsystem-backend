@@ -1,4 +1,4 @@
-package com.nagarro.nagp.flightsservice;
+package com.nagarro.nagp.bookingservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,10 +12,10 @@ import org.springframework.jms.support.converter.MessageType;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableJms
-public class FlightsServiceApplication {
+public class BookingServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FlightsServiceApplication.class, args);
+		SpringApplication.run(BookingServiceApplication.class, args);
 	}
 	
 	@Bean
@@ -25,5 +25,4 @@ public class FlightsServiceApplication {
 	    converter.setTypeIdPropertyName("_type");
 	    return converter;
 	}
-
 }
