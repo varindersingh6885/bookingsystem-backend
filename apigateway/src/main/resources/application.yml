@@ -1,0 +1,34 @@
+server:
+  port: 8001
+
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: db-flights
+         uri: lb://DB-FLIGHTS
+         predicates:
+           - Path=/flights/**
+         filters:
+           - AuthenticationFilter
+
+
+       - id: restaurant-service
+         uri: lb://RESTAURANT-SERVICE
+         predicates:
+           - Path=/restaurant/**
+         filters:
+           - AuthenticationFilter
+
+       - id: identity-service
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+           - Path=/users/**
+
+ application:
+   name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/

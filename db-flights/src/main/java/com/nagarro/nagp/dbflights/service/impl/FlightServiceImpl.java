@@ -21,11 +21,6 @@ public class FlightServiceImpl implements FlightService {
 	public List<Flight> getAllFlights(FlightSearchParameters fsp) {
 		List<Flight> allFlights = flightRepo.getAllFlights();
 		
-		System.out.println(fsp.getSource());
-		System.out.println(fsp.getDestination());
-		System.out.println(fsp.getDepartureDate());
-		System.out.println("_______________");
-		
 		if(fsp.getSource() == null && 
 				fsp.getDestination() == null && 
 				fsp.getDepartureDate() == null

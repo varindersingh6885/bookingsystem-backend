@@ -1,5 +1,7 @@
 package com.nagarro.nagp.identityservice.service.impl;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String getValidToken(UserCredentials uc) {
+	public String getValidToken(UserCredentials uc, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		User u = userRepo.getUserByUsername(uc.getUsername());
 		
@@ -31,6 +33,7 @@ public class UserServiceImpl implements UserService {
 			if(uc.getPassword().equals(u.getPassword())) {
 				return "validToken123";
 			} else {
+				res.setStatus(401);
 				return "invaild password";
 			}
 		}

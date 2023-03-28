@@ -35,8 +35,8 @@ public class FlightController {
 	}
 	
 	@GetMapping("/{id}")
-	public Flight getFlightById(@PathVariable("flightId") String flightId) {
-		
+	public Flight getFlightById(@PathVariable("id") String flightId) {
+		System.out.println(flightId);
 		Flight f = flightService.getFlightByFlightId(flightId);
 		
 		return f;
