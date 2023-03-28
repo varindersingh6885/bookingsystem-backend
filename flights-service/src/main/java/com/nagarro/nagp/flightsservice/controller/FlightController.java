@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nagarro.nagp.flightsservice.dto.FlightSearchParameters;
+import com.nagarro.nagp.flightsservice.dto.FlightWithoutSeatsData;
 import com.nagarro.nagp.flightsservice.model.Flight;
 import com.nagarro.nagp.flightsservice.service.FlightService;
 
@@ -24,13 +25,13 @@ public class FlightController {
 	private FlightService flightService;
 	
 	@GetMapping("")
-	public List<Flight> searchFlights(
+	public List<FlightWithoutSeatsData> searchFlights(
 			@RequestParam(required = false, name = "source") String source,
 			@RequestParam(required = false, name = "destination") String destination,
 			@RequestParam(required = false, name = "departureDate") String departureDate,
 			HttpServletResponse res
 			) {
-		List<Flight> flights = null;
+		List<FlightWithoutSeatsData> flights = null;
 		try {
 			flights = flightService.getAllFlights(new FlightSearchParameters(source, destination, departureDate));
 		} catch (Exception e) {
@@ -44,9 +45,7 @@ public class FlightController {
 	
 	@GetMapping("/{id}")
 	public Flight getFlightById(@PathVariable("id") String flightId) {
-		System.out.println(flightId);
 		Flight f = flightService.getFlightByFlightId(flightId);
-		
 		return f;
 	}
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.nagarro.nagp.flightsservice.dto.FlightSearchParameters;
+import com.nagarro.nagp.flightsservice.dto.FlightWithoutSeatsData;
 import com.nagarro.nagp.flightsservice.model.Flight;
 import com.nagarro.nagp.flightsservice.service.FlightService;
 
@@ -27,7 +28,7 @@ public class FlightServiceImpl implements FlightService {
     private CircuitBreakerFactory circuitBreakerFactory;
 	
 	@Override
-	public List<Flight> getAllFlights(FlightSearchParameters fsp) {
+	public List<FlightWithoutSeatsData> getAllFlights(FlightSearchParameters fsp) {
 		// TODO Auto-generated method stub
 		RestTemplate restClient = new RestTemplate();
         
@@ -51,13 +52,37 @@ public class FlightServiceImpl implements FlightService {
         if(flights == null) {
         	throw new RuntimeException("Service is down currently. Try again Later");
         }
-		return new ArrayList<>(Arrays.asList(flights));
+        List<FlightWithoutSeatsData> availableFlights = new ArrayList<>();
+        for(Flight f : flights) {
+        	availableFlights.add(new FlightWithoutSeatsData(f));
+        }
+		return availableFlights;
 	}
 
 	@Override
 	public Flight getFlightByFlightId(String flightId) {
-		// TODO Auto-generated method stub
-		return null;
+RestTemplate restClient = new RestTemplate();
+        
+        CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
+        
+        Flight flight = circuitBreaker.run(() -> {
+            System.out.println("Attempt");
+            List<ServiceInstance> dbFlightsService = discoveryClient.getInstances("DB-FLIGHTS");
+            String dbFlightsUri = dbFlightsService.get(0).getUri().toString();
+            
+            dbFlightsUri += "/flights/" + flightId;
+            
+        	
+            return restClient.getForObject(dbFlightsUri, Flight.class);
+        }, throwable -> {
+//        	System.out.println("db-flights service down");
+            return null;
+        });
+        if(flight == null) {
+        	throw new RuntimeException("Service is down currently. Try again Later");
+        }
+        
+		return flight;
 	}
 
 }
