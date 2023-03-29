@@ -104,7 +104,7 @@ public class FlightServiceImpl implements FlightService {
 					"?amount="+booking.getAmount());
 			jmsTemplate.convertAndSend("SeatsAvailableInitiatePaymentRequest",JsonSerializerUtil.serialize(booking));
 		} else {
-			jmsTemplate.convertAndSend("BookingFailedSeatsNotAva",JsonSerializerUtil.serialize(booking));
+			jmsTemplate.convertAndSend("OrderFlightCheckSeatsAvailableFail",JsonSerializerUtil.serialize(booking));
 		}
 		// check seats available
 	}
@@ -119,7 +119,7 @@ public class FlightServiceImpl implements FlightService {
 
 			jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirmSuccess",JsonSerializerUtil.serialize(booking));
 		} else {
-			booking.setRemarks("Seats not available");
+			booking.setRemarks("Seats not available. Kindly be patient your amount will be refunded to your bank withing two working days.");
 			booking.setOrderStatus(OrderStatus.UNCONFIRMED);
 			jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirmFail",JsonSerializerUtil.serialize(booking));
 		}

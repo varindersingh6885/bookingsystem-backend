@@ -62,6 +62,18 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		return totalAmount;
 	}
 	
+	@JmsListener(destination = "UpdateBookingFlightSeatsNotAvailable")
+	public void updateBookingFlightSeatsNotAvailable(String orderPayload) {
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		
+		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
+		
+		booking.setOrderStatus(bookingUpdate.getOrderStatus());
+		booking.setRemarks(bookingUpdate.getRemarks());
+		
+		orderFlightRepo.updateFlightOrder(booking);
+	}
+	
 	@JmsListener(destination = "UpdateBookingFlightPaymentPending")
 	public void seatsAvailableInitiatePaymentRequest(String orderPayload) {
 		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);

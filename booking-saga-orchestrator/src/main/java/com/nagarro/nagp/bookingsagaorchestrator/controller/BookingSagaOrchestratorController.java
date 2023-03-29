@@ -21,6 +21,13 @@ public class BookingSagaOrchestratorController {
 		jmsTemplate.convertAndSend("OrderFlightCheckSeatsAvailable",JsonSerializerUtil.serialize(booking));
 	}
 	
+	@JmsListener(destination = "OrderFlightCheckSeatsAvailableFail")
+	public void orderFlightCheckSeatsAvailableFail(String orderPayload) {
+		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
+
+		jmsTemplate.convertAndSend("UpdateBookingFlightSeatsNotAvailable",JsonSerializerUtil.serialize(booking));
+	}
+	
 	@JmsListener(destination = "SeatsAvailableInitiatePaymentRequest")
 	public void seatsAvailableInitiatePaymentRequest(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
@@ -40,5 +47,12 @@ public class BookingSagaOrchestratorController {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
 		jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirm",JsonSerializerUtil.serialize(booking));
+	}
+	
+	@JmsListener(destination = "OrderFlightBookSeatsConfirmFail")
+	public void orderFlightBookSeatsConfirmFail(String orderPayload) {
+		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
+		
+		jmsTemplate.convertAndSend("UpdateBookingFlightSeatsNotAvailable",JsonSerializerUtil.serialize(booking));
 	}
 }
