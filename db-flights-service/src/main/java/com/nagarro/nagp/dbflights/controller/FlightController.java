@@ -1,16 +1,19 @@
 package com.nagarro.nagp.dbflights.controller;
 
-import java.net.http.HttpRequest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nagarro.nagp.dbflights.constants.FlightSeatStatus;
 import com.nagarro.nagp.dbflights.dto.FlightSearchParameters;
+import com.nagarro.nagp.dbflights.dto.OrderFlight;
 import com.nagarro.nagp.dbflights.model.Flight;
 import com.nagarro.nagp.dbflights.service.FlightService;
 
@@ -36,9 +39,16 @@ public class FlightController {
 	
 	@GetMapping("/{id}")
 	public Flight getFlightById(@PathVariable("id") String flightId) {
-		System.out.println(flightId);
+//		System.out.println(flightId);
 		Flight f = flightService.getFlightByFlightId(flightId);
 		
 		return f;
+	}
+	
+	@PostMapping("/book")
+	public OrderFlight bookSeats(@RequestBody OrderFlight booking) {
+		OrderFlight bookingUpdate = flightService.updateSeatsStatus(booking);
+		
+		return bookingUpdate;
 	}
 }

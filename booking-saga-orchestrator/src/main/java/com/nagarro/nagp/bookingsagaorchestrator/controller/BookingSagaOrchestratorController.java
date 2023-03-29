@@ -32,6 +32,13 @@ public class BookingSagaOrchestratorController {
 	public void orderFlightPaymentReceived(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
-		jmsTemplate.convertAndSend("OrderFlightBookSeats",JsonSerializerUtil.serialize(booking));
+		jmsTemplate.convertAndSend("OrderFlightPaymentReceivedUpdate",JsonSerializerUtil.serialize(booking));
+	}
+	
+	@JmsListener(destination = "OrderFlightBookSeats")
+	public void orderFlightBookSeats(String orderPayload) {
+		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
+		
+		jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirm",JsonSerializerUtil.serialize(booking));
 	}
 }

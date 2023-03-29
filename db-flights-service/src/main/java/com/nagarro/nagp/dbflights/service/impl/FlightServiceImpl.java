@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nagarro.nagp.dbflights.constants.FlightSeatStatus;
 import com.nagarro.nagp.dbflights.dto.FlightSearchParameters;
+import com.nagarro.nagp.dbflights.dto.OrderFlight;
+import com.nagarro.nagp.dbflights.dto.OrderStatus;
 import com.nagarro.nagp.dbflights.model.Flight;
 import com.nagarro.nagp.dbflights.repository.FlightRepository;
 import com.nagarro.nagp.dbflights.service.FlightService;
@@ -73,13 +76,31 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	@Override
-	public Flight updateSeatsStatus(String flightId, List<Integer> seatsToBook, String status) {
-		// TODO Auto-generated method stub
+	public synchronized  OrderFlight updateSeatsStatus(OrderFlight booking) {
+		// first check if all seats are available
+		String flightId = booking.getFlightId();
+		List<Integer> seatsToBook = booking.getSeatNumbers();
+		
 		Flight f = flightRepo.getFlightByFlightID(flightId);
+		boolean isAvailable = true;
 		for(Integer seatNumber : seatsToBook) {
-			f.getSeats().get(seatNumber).setStatus(status);
+			boolean isVacant = f.getSeats().get(seatNumber-1).getStatus().equals(FlightSeatStatus.AVAILABLE);
+			if(isVacant == false) {
+				isAvailable = false;
+				break;
+			}
 		}
-		return null;
+		if(isAvailable) {
+			for(Integer seatNumber : seatsToBook) {
+				f.getSeats().get(seatNumber-1).setStatus(FlightSeatStatus.BOOKED);
+			}
+			booking.setOrderStatus(OrderStatus.CONFIRMED);
+			booking.setRemarks("Your Seats "+booking.getSeatNumbers()+ " have been booked successfully. Enjoy safe journey.");
+		} else {
+			booking.setOrderStatus(OrderStatus.UNCONFIRMED);
+			booking.setRemarks("Booking Failed! Seats not available");
+		}
+		return booking;
 	}
 
 }

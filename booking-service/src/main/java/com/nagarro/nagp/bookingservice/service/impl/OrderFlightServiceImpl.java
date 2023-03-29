@@ -72,7 +72,22 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		booking.setRemarks(bookingUpdate.getRemarks());
 		
 		orderFlightRepo.updateFlightOrder(booking);
+	}
+	
+	@JmsListener(destination = "OrderFlightPaymentReceivedUpdate")
+	public void orderFlightBookSeats(String orderPayload) {
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
 		
-		System.out.println("complete payment");
+		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
+		
+		booking.setOrderStatus(bookingUpdate.getOrderStatus());
+		booking.setRemarks(bookingUpdate.getRemarks());
+		
+		orderFlightRepo.updateFlightOrder(booking);
+		
+		System.out.println("book seats now");
+		
+		//ActiveMq
+		jmsTemplate.convertAndSend("OrderFlightBookSeats",JsonSerializerUtil.serialize(booking));
 	}
 }

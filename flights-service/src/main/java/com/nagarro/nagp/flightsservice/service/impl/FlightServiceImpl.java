@@ -110,6 +110,22 @@ public class FlightServiceImpl implements FlightService {
 	}
 	
 	
+	@JmsListener(destination = "OrderFlightBookSeatsConfirm")
+	public void orderFlightBookSeatsConfirm(String orderPayload) {
+		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
+		
+		OrderFlight bookingUpdate = bookSeats(booking);
+		if(bookingUpdate.getOrderStatus().equals(OrderStatus.CONFIRMED)) {
+
+			jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirmSuccess",JsonSerializerUtil.serialize(booking));
+		} else {
+			booking.setRemarks("Seats not available");
+			booking.setOrderStatus(OrderStatus.UNCONFIRMED);
+			jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirmFail",JsonSerializerUtil.serialize(booking));
+		}
+		// check seats available
+	}
+	
 	private boolean checkSeatsAvailable(String flightId, List<Integer> seatsRequired, OrderFlight booking) {
 		
 		RestTemplate restClient = new RestTemplate();
@@ -136,8 +152,9 @@ public class FlightServiceImpl implements FlightService {
 		}
 		
 		// check if required seats are available
+		// seats in db are from 0 -> 29
 		for(Integer seatRequired : seatsRequired) {
-			FlightSeat seat = flight.getSeats().get(seatRequired);
+			FlightSeat seat = flight.getSeats().get(seatRequired-1);
 			if(!seat.getStatus().equals(FlightSeatStatus.AVAILABLE)) {
 				booking.setOrderStatus(OrderStatus.UNCONFIRMED);
 				booking.setRemarks("Seats not available");
@@ -145,5 +162,37 @@ public class FlightServiceImpl implements FlightService {
 			}
 		}
 		return true;
+	}
+	
+private OrderFlight bookSeats(OrderFlight booking) {
+		
+		RestTemplate restClient = new RestTemplate();
+		CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
+        
+        OrderFlight bookingUpdate = circuitBreaker.run(() -> {
+//            System.out.println("Attempt");
+            List<ServiceInstance> dbFlightsService = discoveryClient.getInstances("DB-FLIGHTS");
+            String dbFlightsUri = dbFlightsService.get(0).getUri().toString();
+            
+            dbFlightsUri += "/flights/book";
+            
+        	
+            return restClient.postForObject(dbFlightsUri, booking, OrderFlight.class);
+        }, throwable -> {
+//        	System.out.println("db-flights service down");
+        	booking.setRemarks("Internal Sever Error. Booking Failed");
+        	booking.setOrderStatus(OrderStatus.UNCONFIRMED);
+            return null;
+        });
+		
+		if(bookingUpdate == null) {
+			return booking;
+		}
+		else {
+        	booking.setRemarks(bookingUpdate.getRemarks());
+        	booking.setOrderStatus(bookingUpdate.getOrderStatus());
+		}
+		
+		return booking;
 	}
 }

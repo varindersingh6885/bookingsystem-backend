@@ -5,6 +5,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import com.nagarro.nagp.paymentservice.model.OrderFlight;
+import com.nagarro.nagp.paymentservice.model.OrderStatus;
 import com.nagarro.nagp.paymentservice.service.PaymentsService;
 import com.nagarro.nagp.paymentservice.util.JsonSerializerUtil;
 
@@ -20,6 +21,8 @@ public class PaymentsServiceImpl implements PaymentsService {
 		
 		OrderFlight booking = new OrderFlight();
 		booking.setBookingId(bookingId);
+		booking.setOrderStatus(OrderStatus.PAYMENT_RECEIVED);
+		booking.setRemarks("Payment is received. Please wait for the order confirmation");
 		
 		//ActiveMq
 		jmsTemplate.convertAndSend("OrderFlightPaymentReceived",JsonSerializerUtil.serialize(booking));
