@@ -95,7 +95,6 @@ public class FlightServiceImpl implements FlightService {
 				f.getSeats().get(seatNumber-1).setStatus(FlightSeatStatus.BOOKED);
 			}
 			booking.setOrderStatus(OrderStatus.CONFIRMED);
-			booking.setRemarks("Your Seats "+booking.getSeatNumbers()+ " have been booked successfully. Enjoy safe journey.");
 		} else {
 			booking.setOrderStatus(OrderStatus.UNCONFIRMED);
 			booking.setRemarks("Booking Failed! Seats not available");

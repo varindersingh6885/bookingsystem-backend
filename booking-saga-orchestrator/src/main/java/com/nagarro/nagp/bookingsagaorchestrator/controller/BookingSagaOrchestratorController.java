@@ -49,6 +49,13 @@ public class BookingSagaOrchestratorController {
 		jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirm",JsonSerializerUtil.serialize(booking));
 	}
 	
+	@JmsListener(destination = "OrderFlightBookSeatsConfirmSuccess")
+	public void orderFlightBookSeatsConfirmSuccess(String orderPayload) {
+		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
+		
+		jmsTemplate.convertAndSend("UpdateBookingFlightBookingConfirmed",JsonSerializerUtil.serialize(booking));
+	}
+	
 	@JmsListener(destination = "OrderFlightBookSeatsConfirmFail")
 	public void orderFlightBookSeatsConfirmFail(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);

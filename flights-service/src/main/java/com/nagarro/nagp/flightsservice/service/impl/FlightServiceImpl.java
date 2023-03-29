@@ -116,6 +116,7 @@ public class FlightServiceImpl implements FlightService {
 		
 		OrderFlight bookingUpdate = bookSeats(booking);
 		if(bookingUpdate.getOrderStatus().equals(OrderStatus.CONFIRMED)) {
+			booking.setRemarks("Your Seats "+booking.getSeatNumbers()+ " have been booked successfully. Enjoy safe journey.");
 
 			jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirmSuccess",JsonSerializerUtil.serialize(booking));
 		} else {
