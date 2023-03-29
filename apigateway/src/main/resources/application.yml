@@ -19,6 +19,13 @@ spring:
            - Path=/booking/**
          filters:
            - AuthenticationFilter
+           
+       - id: payments-service
+         uri: lb://PAYMENTs-SERVICE
+         predicates:
+           - Path=/payments/**
+         filters:
+           - AuthenticationFilter
 
        - id: identity-service
          uri: lb://IDENTITY-SERVICE

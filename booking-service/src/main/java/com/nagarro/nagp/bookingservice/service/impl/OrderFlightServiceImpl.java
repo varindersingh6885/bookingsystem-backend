@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
@@ -59,5 +60,19 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 			}
 		}
 		return totalAmount;
+	}
+	
+	@JmsListener(destination = "UpdateBookingFlightPaymentPending")
+	public void seatsAvailableInitiatePaymentRequest(String orderPayload) {
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		
+		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
+		
+		booking.setOrderStatus(bookingUpdate.getOrderStatus());
+		booking.setRemarks(bookingUpdate.getRemarks());
+		
+		orderFlightRepo.updateFlightOrder(booking);
+		
+		System.out.println("complete payment");
 	}
 }

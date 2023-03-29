@@ -1,12 +1,11 @@
-package com.nagarro.nagp.bookingsagaorchestrator.util;
+package com.nagarro.nagp.paymentservice.util;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.nagarro.nagp.bookingsagaorchestrator.model.OrderFlight;
+import com.nagarro.nagp.paymentservice.model.OrderFlight;
 
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

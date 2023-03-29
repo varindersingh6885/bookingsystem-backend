@@ -19,13 +19,13 @@ public class BookingServiceController {
 	@Autowired
 	private OrderFlightService orderFlightService;
 	
-	@PostMapping("/flight")
+	@PostMapping("/flights")
 	public OrderFlight createAnFlightBooking(@RequestBody NewFlightOrder order) {
 		OrderFlight orderGenerated = orderFlightService.createFlightOrder(order);
 		return orderGenerated;
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("flights/{id}")
 	public OrderFlight getOrderFlightBooking(@PathVariable("id") String bookingId) {
 		OrderFlight booking = orderFlightService.getFlightOrder(bookingId);
 		return booking;

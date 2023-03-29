@@ -30,4 +30,10 @@ public class OrderFlightRepositoryImpl implements OrderFlightRepository {
 		return null;
 	}
 
+	@Override
+	public OrderFlight updateFlightOrder(OrderFlight order) {
+		flightOrders.put(order.getBookingId(), order);
+		return order;
+	}
+
 }

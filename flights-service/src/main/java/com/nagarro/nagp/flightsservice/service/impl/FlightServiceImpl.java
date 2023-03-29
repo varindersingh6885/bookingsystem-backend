@@ -99,8 +99,9 @@ public class FlightServiceImpl implements FlightService {
 		boolean areSeatsAvailable = checkSeatsAvailable(booking.getFlightId(), booking.getSeatNumbers(), booking);
 		if(areSeatsAvailable) {
 			booking.setOrderStatus(OrderStatus.PAYMENT_PENDING);
-			booking.setRemarks("Seats are available proceed to payment using given uri\n" +
-					"http://localhost:8001/payments/"+booking.getBookingId());
+			booking.setRemarks("Seats are available proceed to payment using given uri " +
+					"http://localhost:8001/payments/flights/"+booking.getBookingId() +
+					"?amount="+booking.getAmount());
 			jmsTemplate.convertAndSend("SeatsAvailableInitiatePaymentRequest",JsonSerializerUtil.serialize(booking));
 		} else {
 			jmsTemplate.convertAndSend("BookingFailedSeatsNotAva",JsonSerializerUtil.serialize(booking));
