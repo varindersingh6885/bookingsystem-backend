@@ -98,9 +98,10 @@ public class FlightServiceImpl implements FlightService {
 		
 		boolean areSeatsAvailable = checkSeatsAvailable(booking.getFlightId(), booking.getSeatNumbers(), booking);
 		if(areSeatsAvailable) {
-			booking.setOrderStatus(OrderStatus.PROCESSING);
-			booking.setRemarks("Seats are available proceed to payment");
-			jmsTemplate.convertAndSend("NextEvent",JsonSerializerUtil.serialize(booking));
+			booking.setOrderStatus(OrderStatus.PAYMENT_PENDING);
+			booking.setRemarks("Seats are available proceed to payment using given uri\n" +
+					"http://localhost:8001/payments/"+booking.getBookingId());
+			jmsTemplate.convertAndSend("SeatsAvailableInitiatePaymentRequest",JsonSerializerUtil.serialize(booking));
 		} else {
 			jmsTemplate.convertAndSend("BookingFailedSeatsNotAva",JsonSerializerUtil.serialize(booking));
 		}
@@ -114,7 +115,7 @@ public class FlightServiceImpl implements FlightService {
 		CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
         
         Flight flight = circuitBreaker.run(() -> {
-            System.out.println("Attempt");
+//            System.out.println("Attempt");
             List<ServiceInstance> dbFlightsService = discoveryClient.getInstances("DB-FLIGHTS");
             String dbFlightsUri = dbFlightsService.get(0).getUri().toString();
             

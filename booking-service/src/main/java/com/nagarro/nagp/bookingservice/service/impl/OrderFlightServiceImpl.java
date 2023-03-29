@@ -28,7 +28,7 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		
 		OrderFlight booking = new OrderFlight();
 		booking.setBookingId(UUID.randomUUID().toString());
-		booking.setOrderStatus(OrderStatus.INITIATING);
+		booking.setOrderStatus(OrderStatus.PROCESSING);
 		booking.setAmount(calAmount(order.getSeatNumbers()));
 		booking.setUsername(order.getUsername());
 		booking.setFlightId(order.getFlightId());
@@ -45,8 +45,8 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 
 	@Override
 	public OrderFlight getFlightOrder(String bookingId) {
-		// TODO Auto-generated method stub
-		return null;
+		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingId);
+		return booking;
 	}
 	
 	private float calAmount(List<Integer> seatNumbers) {
