@@ -30,4 +30,15 @@ public class PaymentsServiceImpl implements PaymentsService {
 		return "payment is successfull";
 	}
 
+	@Override
+	public void mockPaymentFailure(String bookingId) {
+		// TODO Auto-generated method stub
+		OrderFlight booking = new OrderFlight();
+		booking.setBookingId(bookingId);
+		booking.setOrderStatus(OrderStatus.PAYMENT_FAILED);
+		booking.setRemarks("Payment Failed! Kindly create a new booking");
+		
+		jmsTemplate.convertAndSend("OrderFlightPaymentFailed",JsonSerializerUtil.serialize(booking));
+	}
+
 }

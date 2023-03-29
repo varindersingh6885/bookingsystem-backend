@@ -23,7 +23,7 @@ public class PaymentsServiceController {
 	public String acceptPaymentFlights(@PathVariable("bookingID") String bookingId, @RequestParam(required = false, name = "fail") String doFail) {
 		
 		if(doFail != null && doFail.toLowerCase().equals("true")) {
-			
+			paymentService.mockPaymentFailure(bookingId);
 			return "payment not successful";
 		} else {
 			

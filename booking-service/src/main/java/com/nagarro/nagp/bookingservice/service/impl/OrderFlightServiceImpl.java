@@ -114,4 +114,16 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		//ActiveMq
 		jmsTemplate.convertAndSend("OrderFlightBookSeats",JsonSerializerUtil.serialize(booking));
 	}
+
+	@JmsListener(destination = "OrderFlightPaymentFailedUpdate")
+	public void orderFlightPaymentFailedUpdate(String orderPayload) {
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		
+		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
+		
+		booking.setOrderStatus(bookingUpdate.getOrderStatus());
+		booking.setRemarks(bookingUpdate.getRemarks());
+		
+		orderFlightRepo.updateFlightOrder(booking);
+	}
 }
