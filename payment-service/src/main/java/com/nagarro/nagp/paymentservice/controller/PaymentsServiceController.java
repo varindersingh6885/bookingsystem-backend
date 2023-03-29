@@ -2,6 +2,9 @@ package com.nagarro.nagp.paymentservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +19,17 @@ import com.nagarro.nagp.paymentservice.service.PaymentsService;
 @RequestMapping("/payments")
 public class PaymentsServiceController {
 	
+	Logger logger = LogManager.getLogger(PaymentsServiceController.class);
+	
 	@Autowired
 	private PaymentsService paymentService;
 	
 	@PostMapping("/flights/{bookingID}")
 	public String acceptPaymentFlights(@PathVariable("bookingID") String bookingId, @RequestParam(required = false, name = "fail") String doFail) {
-		
+		logger.info("/payments processing payment");
 		if(doFail != null && doFail.toLowerCase().equals("true")) {
 			paymentService.mockPaymentFailure(bookingId);
+			logger.error("/payments payment failed");
 			return "payment not successful";
 		} else {
 			
@@ -32,23 +38,10 @@ public class PaymentsServiceController {
 			booking.setBookingId(bookingId);
 			
 			String msg = paymentService.paymentReceived(bookingId);
-			
+			logger.info("/payments payment received successfully");
 			return msg;
 			
 		}
 	}
 	
-//	@JmsListener(destination = "OrderFlightRequestReceivedEvent")
-//	public void newFlightOrderRequestReceived(String orderPayload) {
-//		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
-//
-//		jmsTemplate.convertAndSend("OrderFlightCheckSeatsAvailable",JsonSerializerUtil.serialize(booking));
-//	}
-//	
-//	@JmsListener(destination = "SeatsAvailableInitiatePaymentRequest")
-//	public void seatsAvailableInitiatePaymentRequest(String orderPayload) {
-//		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
-//
-//		jmsTemplate.convertAndSend("UpdateBookingFlightPaymentPending",JsonSerializerUtil.serialize(booking));
-//	}
 }

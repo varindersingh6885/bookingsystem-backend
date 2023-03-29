@@ -3,6 +3,10 @@ package com.nagarro.nagp.bookingservice.service.impl;
 import java.util.List;
 import java.util.UUID;
 
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
@@ -18,6 +22,7 @@ import com.nagarro.nagp.bookingservice.util.JsonSerializerUtil;
 @Service
 public class OrderFlightServiceImpl implements OrderFlightService {
 
+	Logger logger = LogManager.getLogger(OrderFlightServiceImpl.class);
 	@Autowired 
 	private JmsTemplate jmsTemplate;
 	
@@ -71,11 +76,16 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		booking.setOrderStatus(bookingUpdate.getOrderStatus());
 		booking.setRemarks(bookingUpdate.getRemarks());
 		
+		logger.info("ActiveMqEvent UpdateBookingFlightSeatsNotAvailable");
+		
 		orderFlightRepo.updateFlightOrder(booking);
 	}
 	
 	@JmsListener(destination = "UpdateBookingFlightBookingConfirmed")
 	public void updateBookingFlightBookingConfirmed(String orderPayload) {
+		
+		logger.info("ActiveMqEvent UpdateBookingFlightBookingConfirmed");
+
 		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
@@ -83,11 +93,15 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		booking.setOrderStatus(bookingUpdate.getOrderStatus());
 		booking.setRemarks(bookingUpdate.getRemarks());
 		
+		
 		orderFlightRepo.updateFlightOrder(booking);
 	}
 	
 	@JmsListener(destination = "UpdateBookingFlightPaymentPending")
 	public void seatsAvailableInitiatePaymentRequest(String orderPayload) {
+		
+		logger.info("ActiveMqEvent UpdateBookingFlightPaymentPending");
+		
 		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
@@ -100,6 +114,9 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 	
 	@JmsListener(destination = "OrderFlightPaymentReceivedUpdate")
 	public void orderFlightBookSeats(String orderPayload) {
+		
+		logger.info("ActiveMqEvent OrderFlightPaymentReceivedUpdate");
+		
 		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
@@ -117,6 +134,9 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 
 	@JmsListener(destination = "OrderFlightPaymentFailedUpdate")
 	public void orderFlightPaymentFailedUpdate(String orderPayload) {
+		
+		logger.info("ActiveMqEvent OrderFlightPaymentFailedUpdate");
+		
 		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());

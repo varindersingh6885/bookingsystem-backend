@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +23,7 @@ import com.nagarro.nagp.flightsservice.service.FlightService;
 @RequestMapping("/flights")
 public class FlightController {
 	
+	Logger logger = LogManager.getLogger(FlightController.class);
 	
 	@Autowired
 	private FlightService flightService;
@@ -31,6 +35,9 @@ public class FlightController {
 			@RequestParam(required = false, name = "departureDate") String departureDate,
 			HttpServletResponse res
 			) {
+		
+		logger.info("/flights search flights");
+		
 		List<FlightWithoutSeatsData> flights = null;
 		try {
 			flights = flightService.getAllFlights(new FlightSearchParameters(source, destination, departureDate));
@@ -45,6 +52,9 @@ public class FlightController {
 	
 	@GetMapping("/{id}")
 	public Flight getFlightById(@PathVariable("id") String flightId) {
+		
+		logger.info("/flights/{id} get flight by flightID");
+		
 		Flight f = flightService.getFlightByFlightId(flightId);
 		return f;
 	}

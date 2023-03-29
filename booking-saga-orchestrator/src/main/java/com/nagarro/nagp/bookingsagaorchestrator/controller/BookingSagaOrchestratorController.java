@@ -1,5 +1,7 @@
 package com.nagarro.nagp.bookingsagaorchestrator.controller;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
@@ -11,13 +13,16 @@ import com.nagarro.nagp.bookingsagaorchestrator.util.JsonSerializerUtil;
 @Controller
 public class BookingSagaOrchestratorController {
 	
+	Logger logger = LogManager.getLogger(BookingSagaOrchestratorController.class);
+	
 	@Autowired 
 	private JmsTemplate jmsTemplate;
 	
 	@JmsListener(destination = "OrderFlightRequestReceivedEvent")
 	public void newFlightOrderRequestReceived(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
-
+		
+		logger.info("ActiveMqEvent OrderFlightRequestReceivedEvent");
 		jmsTemplate.convertAndSend("OrderFlightCheckSeatsAvailable",JsonSerializerUtil.serialize(booking));
 	}
 	
@@ -25,6 +30,7 @@ public class BookingSagaOrchestratorController {
 	public void orderFlightCheckSeatsAvailableFail(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 
+		logger.info("ActiveMqEvent OrderFlightCheckSeatsAvailableFail");
 		jmsTemplate.convertAndSend("UpdateBookingFlightSeatsNotAvailable",JsonSerializerUtil.serialize(booking));
 	}
 	
@@ -32,6 +38,7 @@ public class BookingSagaOrchestratorController {
 	public void seatsAvailableInitiatePaymentRequest(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 
+		logger.info("ActiveMqEvent SeatsAvailableInitiatePaymentRequest");
 		jmsTemplate.convertAndSend("UpdateBookingFlightPaymentPending",JsonSerializerUtil.serialize(booking));
 	}
 	
@@ -39,6 +46,7 @@ public class BookingSagaOrchestratorController {
 	public void orderFlightPaymentReceived(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
+		logger.info("ActiveMqEvent OrderFlightPaymentReceived");
 		jmsTemplate.convertAndSend("OrderFlightPaymentReceivedUpdate",JsonSerializerUtil.serialize(booking));
 	}
 
@@ -46,6 +54,7 @@ public class BookingSagaOrchestratorController {
 	public void orderFlightPaymentFailed(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
+		logger.info("ActiveMqEvent OrderFlightPaymentFailed");
 		jmsTemplate.convertAndSend("OrderFlightPaymentFailedUpdate",JsonSerializerUtil.serialize(booking));
 	}
 	
@@ -53,6 +62,7 @@ public class BookingSagaOrchestratorController {
 	public void orderFlightBookSeats(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
+		logger.info("ActiveMqEvent OrderFlightBookSeats");
 		jmsTemplate.convertAndSend("OrderFlightBookSeatsConfirm",JsonSerializerUtil.serialize(booking));
 	}
 	
@@ -60,6 +70,7 @@ public class BookingSagaOrchestratorController {
 	public void orderFlightBookSeatsConfirmSuccess(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
+		logger.info("ActiveMqEvent OrderFlightBookSeatsConfirmSuccess");
 		jmsTemplate.convertAndSend("UpdateBookingFlightBookingConfirmed",JsonSerializerUtil.serialize(booking));
 	}
 	
@@ -67,6 +78,7 @@ public class BookingSagaOrchestratorController {
 	public void orderFlightBookSeatsConfirmFail(String orderPayload) {
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
+		logger.info("ActiveMqEvent OrderFlightBookSeatsConfirmFail");
 		jmsTemplate.convertAndSend("UpdateBookingFlightSeatsNotAvailable",JsonSerializerUtil.serialize(booking));
 	}
 }

@@ -3,6 +3,9 @@ package com.nagarro.nagp.flightsservice.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
@@ -25,6 +28,8 @@ import com.nagarro.nagp.flightsservice.util.JsonSerializerUtil;
 
 @Service
 public class FlightServiceImpl implements FlightService {
+	
+	Logger logger = LogManager.getLogger(FlightServiceImpl.class);
 	
 	@Autowired 
 	private JmsTemplate jmsTemplate;
@@ -94,6 +99,8 @@ public class FlightServiceImpl implements FlightService {
 	
 	@JmsListener(destination = "OrderFlightCheckSeatsAvailable")
 	public void newFlightOrderRequestReceived(String orderPayload) {
+		
+		logger.info("ActiveMqEvent OrderFlightCheckSeatsAvailable");
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
 		boolean areSeatsAvailable = checkSeatsAvailable(booking.getFlightId(), booking.getSeatNumbers(), booking);
@@ -112,6 +119,9 @@ public class FlightServiceImpl implements FlightService {
 	
 	@JmsListener(destination = "OrderFlightBookSeatsConfirm")
 	public void orderFlightBookSeatsConfirm(String orderPayload) {
+		
+		logger.info("ActiveMqEvent OrderFlightBookSeatsConfirm");
+		
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
 		OrderFlight bookingUpdate = bookSeats(booking);
