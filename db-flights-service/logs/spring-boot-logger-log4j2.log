@@ -1,0 +1,35 @@
+2023-03-30 22:37:34,670 INFO o.s.b.StartupInfoLogger [main] Starting DbFlightsServiceApplication using Java 17.0.4.1 on IN-HD1Z2J3 with PID 8260 (C:\Users\varindersingh01\Desktop\NAGP\Microservices Assignment Implementation\db-flights-service\target\classes started by varindersingh01 in C:\Users\varindersingh01\Desktop\NAGP\Microservices Assignment Implementation\db-flights-service)
+2023-03-30 22:37:34,680 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-03-30 22:37:35,685 INFO o.s.c.c.s.GenericScope [main] BeanFactory id=aa33c403-bda9-3285-bd8a-bdf4c048eaf2
+2023-03-30 22:37:35,974 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 7001 (http)
+2023-03-30 22:37:35,995 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-7001"]
+2023-03-30 22:37:35,996 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2023-03-30 22:37:35,997 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-03-30 22:37:36,210 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-03-30 22:37:36,211 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1487 ms
+2023-03-30 22:37:37,062 INFO o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration [main] Eureka HTTP Client uses RestTemplate.
+2023-03-30 22:37:37,411 WARN o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger [main] Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-03-30 22:37:37,492 INFO o.s.c.n.e.InstanceInfoFactory [main] Setting initial instance status as: STARTING
+2023-03-30 22:37:37,546 INFO c.n.d.DiscoveryClient [main] Initializing Eureka in region us-east-1
+2023-03-30 22:37:37,552 INFO c.n.d.s.r.a.ConfigClusterResolver [main] Resolving eureka endpoints via configuration
+2023-03-30 22:37:37,585 INFO c.n.d.DiscoveryClient [main] Disable delta property : false
+2023-03-30 22:37:37,586 INFO c.n.d.DiscoveryClient [main] Single vip registry refresh property : null
+2023-03-30 22:37:37,586 INFO c.n.d.DiscoveryClient [main] Force full registry fetch : false
+2023-03-30 22:37:37,586 INFO c.n.d.DiscoveryClient [main] Application is null : false
+2023-03-30 22:37:37,587 INFO c.n.d.DiscoveryClient [main] Registered Applications size is zero : true
+2023-03-30 22:37:37,587 INFO c.n.d.DiscoveryClient [main] Application version is -1: true
+2023-03-30 22:37:37,587 INFO c.n.d.DiscoveryClient [main] Getting all instance registry info from the eureka server
+2023-03-30 22:37:38,007 INFO c.n.d.DiscoveryClient [main] The response status is 200
+2023-03-30 22:37:38,010 INFO c.n.d.DiscoveryClient [main] Starting heartbeat executor: renew interval is: 30
+2023-03-30 22:37:38,013 INFO c.n.d.InstanceInfoReplicator [main] InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-03-30 22:37:38,019 INFO c.n.d.DiscoveryClient [main] Discovery Client initialized at timestamp 1680196058018 with initial instances count: 4
+2023-03-30 22:37:38,021 INFO o.s.c.n.e.s.EurekaServiceRegistry [main] Registering application DB-FLIGHTS with eureka with status UP
+2023-03-30 22:37:38,022 INFO c.n.d.DiscoveryClient$3 [main] Saw local status change event StatusChangeEvent [timestamp=1680196058022, current=UP, previous=STARTING]
+2023-03-30 22:37:38,024 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_DB-FLIGHTS/IN-HD1Z2J3.Nagarro.local:db-flights:7001: registering service...
+2023-03-30 22:37:38,025 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-7001"]
+2023-03-30 22:37:38,053 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 7001 (http) with context path ''
+2023-03-30 22:37:38,055 INFO o.s.c.n.e.s.EurekaAutoServiceRegistration [main] Updating port to 7001
+2023-03-30 22:37:38,070 INFO c.n.d.DiscoveryClient [DiscoveryClient-InstanceInfoReplicator-0] DiscoveryClient_DB-FLIGHTS/IN-HD1Z2J3.Nagarro.local:db-flights:7001 - registration status: 204
+2023-03-30 22:37:38,317 INFO o.s.b.StartupInfoLogger [main] Started DbFlightsServiceApplication in 4.311 seconds (JVM running for 5.589)
+2023-03-30 22:42:37,594 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-03-30 22:47:37,610 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration

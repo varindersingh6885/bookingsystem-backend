@@ -22,6 +22,7 @@ import com.nagarro.nagp.bookingservice.service.OrderHotelService;
 import com.nagarro.nagp.bookingservice.util.JsonSerializerUtil;
 import com.nagarro.nagp.bookingservice.util.PriceUtil;
 
+@Service
 public class OrderHotelServiceImpl implements OrderHotelService {
 	
 	Logger logger = LogManager.getLogger(OrderFlightServiceImpl.class);
