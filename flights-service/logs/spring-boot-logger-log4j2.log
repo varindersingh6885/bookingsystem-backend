@@ -605,3 +605,4 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 2023-03-30 22:38:23,160 ERROR o.s.j.l.DefaultMessageListenerContainer [org.springframework.jms.JmsListenerEndpointContainer#1-1] Could not refresh JMS Connection for destination 'OrderFlightBookSeatsConfirm' - retrying using FixedBackOff{interval=5000, currentAttempts=6, maxAttempts=unlimited}. Cause: Could not connect to broker URL: tcp://IN-HD1Z2J3:61616. Reason: java.net.ConnectException: Connection refused: no further information
 2023-03-30 22:42:30,423 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
 2023-03-30 22:47:30,430 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
+2023-03-30 22:52:30,445 INFO c.n.d.s.r.a.ConfigClusterResolver [AsyncResolver-bootstrap-executor-0] Resolving eureka endpoints via configuration
