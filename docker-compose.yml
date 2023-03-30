@@ -25,6 +25,8 @@ services:
       - db-flights-service
       - flights-service
       - identity-service
+      - hotels-service
+      - db-hotels-service
     networks:
       - test-network
     ports:
@@ -35,6 +37,8 @@ services:
       - db-flights-service
       - booking-service
       - identity-service
+      - hotels-service
+      - db-hotels-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://discovery-server:8761/eureka 
       - SPRING_PROFILES_ACTIVE=docker
