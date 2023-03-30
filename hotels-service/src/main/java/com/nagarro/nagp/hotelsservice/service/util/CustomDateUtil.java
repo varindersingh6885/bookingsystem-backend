@@ -1,4 +1,4 @@
-package com.nagarro.nagp.hotelsservice.util;
+package com.nagarro.nagp.hotelsservice.service.util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

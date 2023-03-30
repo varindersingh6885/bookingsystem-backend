@@ -1,4 +1,4 @@
-package com.nagarro.training.hotelsservice;
+package com.nagarro.nagp.hotelsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

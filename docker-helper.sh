@@ -35,3 +35,7 @@ docker push varindersingh6885/nagpbookingsystem_payments-service
 mvn clean install -f ./db-hotels-service
 docker build -t varindersingh6885/nagpbookingsystem_db-hotels-service ./db-hotels-service
 docker push varindersingh6885/nagpbookingsystem_db-hotels-service
+
+mvn clean install -f ./hotels-service
+docker build -t varindersingh6885/nagpbookingsystem_hotels-service ./hotels-service
+docker push varindersingh6885/nagpbookingsystem_hotels-service

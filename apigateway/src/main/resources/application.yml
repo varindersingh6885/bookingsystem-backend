@@ -12,14 +12,6 @@ spring:
          filters:
            - AuthenticationFilter
 
-       - id: hotels-service
-         uri: lb://HOTELS-SERVICE
-         predicates:
-           - Path=/hotels/**
-         filters:
-           - AuthenticationFilter
-
-
        - id: booking-service
          uri: lb://BOOKING-SERVICE
          predicates:
@@ -38,6 +30,13 @@ spring:
          uri: lb://IDENTITY-SERVICE
          predicates:
            - Path=/users/**
+           
+       - id: hotels-service
+         uri: lb://HOTELS-SERVICE
+         predicates:
+           - Path=/hotels/**
+         filters:
+           - AuthenticationFilter
 
  application:
    name: api-gateway

@@ -1,4 +1,4 @@
-package com.nagarro.nagp.hotelsservice.util;
+package com.nagarro.nagp.hotelsservice.service.util;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;

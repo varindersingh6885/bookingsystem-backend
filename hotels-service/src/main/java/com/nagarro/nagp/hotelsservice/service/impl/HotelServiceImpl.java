@@ -26,8 +26,8 @@ import com.nagarro.nagp.hotelsservice.dto.OrderStatus;
 import com.nagarro.nagp.hotelsservice.model.Hotel;
 import com.nagarro.nagp.hotelsservice.model.HotelRoom;
 import com.nagarro.nagp.hotelsservice.service.HotelService;
-import com.nagarro.nagp.hotelsservice.util.CustomDateUtil;
-import com.nagarro.nagp.hotelsservice.util.JsonSerializerUtil;
+import com.nagarro.nagp.hotelsservice.service.util.CustomDateUtil;
+import com.nagarro.nagp.hotelsservice.service.util.JsonSerializerUtil;
 
 @Service
 public class HotelServiceImpl implements HotelService {

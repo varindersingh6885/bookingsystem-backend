@@ -16,7 +16,6 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
 
-
   api-gateway:
     container_name: api-gateway
     image: varindersingh6885/nagpbookingsystem_api-gatway
@@ -85,6 +84,24 @@ services:
       - discovery-server
     environment:
       - eureka.client.serviceUrl.defaultZone=http://discovery-server:8761/eureka
+
+  hotels-service:
+    container_name: hotels-service
+    image: varindersingh6885/nagpbookingsystem_hotels-service
+    networks:
+      - test-network
+    depends_on:
+      - discovery-server
+      - db-hotels-service
+      - activemq
+    ports:
+      - "7500:7500"
+    links:
+      - db-hotels-service
+      - discovery-server
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://discovery-server:8761/eureka
+      - spring.activemq.broker-url=tcp://activemq:61616
 
   identity-service:
     container_name: identity-service
