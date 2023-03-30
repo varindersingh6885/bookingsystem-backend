@@ -224,6 +224,7 @@ Logger logger = LogManager.getLogger(HotelServiceImpl.class);
 		else {
         	booking.setRemarks(bookingUpdate.getRemarks());
         	booking.setOrderStatus(bookingUpdate.getOrderStatus());
+        	booking.setRoomsNumbersAllocated(bookingUpdate.getRoomsNumbersAllocated());
 		}
 		
 		return booking;

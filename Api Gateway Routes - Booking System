@@ -1,0 +1,510 @@
+{
+	"info": {
+		"_postman_id": "68562c5f-f7f6-4367-ab59-6d2dda4a612a",
+		"name": "Nagp/BookingSystem/api-gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add/Register New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"varindersingh@gmail.com\",\r\n    \"password\" : \"varinder123\",\r\n    \"firstName\" : \"Varinder\",\r\n    \"lastName\" : \"Singh\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login / Validating user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"varindersingh@gmail.com\",\r\n    \"password\" : \"varinder123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users",
+						"login"
+					],
+					"query": [
+						{
+							"key": "destination",
+							"value": "Delhi",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Flight By Source, Destination, DepartureTime",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/flights?source=Amritsar&destination=Delhi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"flights"
+					],
+					"query": [
+						{
+							"key": "source",
+							"value": "Amritsar"
+						},
+						{
+							"key": "destination",
+							"value": "Delhi"
+						},
+						{
+							"key": "departureDate",
+							"value": "24-04-2023",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Flight By FlightId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/flights/AB1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"flights",
+						"AB1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book a Flight",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"varindersingh@gmail.com\",\r\n    \"flightId\" : \"AB1234\",\r\n    \"seatNumbers\" : [1,2,3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/booking/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"booking",
+						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Booking Order Flights Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/booking/flights/18dcced5-8b97-4a2b-843d-11b36b28eee2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"booking",
+						"flights",
+						"18dcced5-8b97-4a2b-843d-11b36b28eee2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Flights Payment Success Mock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/payments/flights/18dcced5-8b97-4a2b-843d-11b36b28eee2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"payments",
+						"flights",
+						"18dcced5-8b97-4a2b-843d-11b36b28eee2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Flights Payment Fail Mock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/payments/flights/42a1b503-3f47-421c-8abc-deafcf0b7f9a?fail=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"payments",
+						"flights",
+						"42a1b503-3f47-421c-8abc-deafcf0b7f9a"
+					],
+					"query": [
+						{
+							"key": "fail",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hotels By Hotel Name, City, Address",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/hotels?city=Amritsar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"hotels"
+					],
+					"query": [
+						{
+							"key": "hotelName",
+							"value": "Hyatt",
+							"disabled": true
+						},
+						{
+							"key": "city",
+							"value": "Amritsar"
+						},
+						{
+							"key": "address",
+							"value": "Ranjit Avenue, Amritsar",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hotels By Hotel ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/hotels/HY4139",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"hotels",
+						"HY4139"
+					],
+					"query": [
+						{
+							"key": "hotelName",
+							"value": "Hyatt",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "Ranjit Avenue, Amritsar",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Hotel Rooms",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"varindersingh@gmail.com\",\r\n\t\"hotelId\" : \"HY4139\",\r\n\t\"checkInDate\" : \"01-04-2023\",\r\n\t\"checkOutDate\" : \"03-04-2023\",\r\n\t\"roomsRequired\" : 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/booking/hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"booking",
+						"hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hotel Booking Order Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/booking/hotels/32358d8b-0e0b-4a6d-b3b7-454c1b947d61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"booking",
+						"hotels",
+						"32358d8b-0e0b-4a6d-b3b7-454c1b947d61"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Hotels Payment Success Mock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/payments/hotels/32358d8b-0e0b-4a6d-b3b7-454c1b947d61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"payments",
+						"hotels",
+						"32358d8b-0e0b-4a6d-b3b7-454c1b947d61"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Hotels Payment Fail Mock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "validToken123varindersingh@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/payments/hotels/928bf7ee-64b8-4b21-a493-8347f047a9f1?fail=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"payments",
+						"hotels",
+						"928bf7ee-64b8-4b21-a493-8347f047a9f1"
+					],
+					"query": [
+						{
+							"key": "fail",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
