@@ -1,2 +1,0 @@
-2023-03-30 22:16:41,248 INFO o.s.b.StartupInfoLogger [main] Starting DbHotelsServiceApplication using Java 17.0.4.1 on IN-HD1Z2J3 with PID 14000 (C:\Users\varindersingh01\Desktop\NAGP\Microservices Assignment Implementation\db-hotels-service\target\classes started by varindersingh01 in C:\Users\varindersingh01\Desktop\NAGP\Microservices Assignment Implementation\db-hotels-service)
-2023-03-30 22:16:41,256 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"

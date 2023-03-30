@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.nagarro.nagp.bookingsagaorchestrator.model.OrderFlight;
+import com.nagarro.nagp.bookingsagaorchestrator.model.OrderHotel;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -28,7 +29,7 @@ public class JsonSerializerUtil {
     return retVal;
   }
   
-  public static OrderFlight orderPayload(String respData) {
+  public static OrderFlight orderPayloadFlight(String respData) {
     OrderFlight order = null;
     try {
     	
@@ -43,6 +44,22 @@ public class JsonSerializerUtil {
     }
     return order;
   }
+  
+  public static OrderHotel orderPayloadHotel(String respData) {
+	  	OrderHotel order = null;
+	    try {
+	    	
+	    	order = mapper.readValue(respData, OrderHotel.class);
+	     
+	   /*   order = objectMapper
+	          .readValue(respData, new TypeReference<Order>() {
+	          });*/
+
+	    } catch (Exception e) {
+	      log.error(e.getMessage());
+	    }
+	    return order;
+	  }
 
 
 
