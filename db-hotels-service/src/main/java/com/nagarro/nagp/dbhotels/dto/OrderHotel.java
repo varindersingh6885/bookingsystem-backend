@@ -1,5 +1,6 @@
 package com.nagarro.nagp.dbhotels.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderHotel {
@@ -8,25 +9,30 @@ public class OrderHotel {
 	private float amount;
 	private String hotelId;
 	private String checkInDate;
-	private String checOutDate;
+	private String checkOutDate;
 	private int roomsRequired;
 	private OrderStatus orderStatus;
 	private String remarks;
+	private List<Integer> roomsNumbersAllocated;
 	
-	public OrderHotel() {}
+	public OrderHotel() {
+		this.roomsNumbersAllocated = new ArrayList<>();
+	}
 
 	public OrderHotel(String bookingId, String username, float amount, String hotelId, String checkInDate,
-			String checOutDate, int roomsRequired, OrderStatus orderStatus, String remarks) {
+			String checkOutDate, int roomsRequired, OrderStatus orderStatus, String remarks,
+			List<Integer> roomsNumbersAllocated) {
 		super();
 		this.bookingId = bookingId;
 		this.username = username;
 		this.amount = amount;
 		this.hotelId = hotelId;
 		this.checkInDate = checkInDate;
-		this.checOutDate = checOutDate;
+		this.checkOutDate = checkOutDate;
 		this.roomsRequired = roomsRequired;
 		this.orderStatus = orderStatus;
 		this.remarks = remarks;
+		this.roomsNumbersAllocated = roomsNumbersAllocated;
 	}
 
 	public String getBookingId() {
@@ -69,12 +75,12 @@ public class OrderHotel {
 		this.checkInDate = checkInDate;
 	}
 
-	public String getChecOutDate() {
-		return checOutDate;
+	public String getCheckOutDate() {
+		return checkOutDate;
 	}
 
-	public void setChecOutDate(String checOutDate) {
-		this.checOutDate = checOutDate;
+	public void setCheckOutDate(String checkOutDate) {
+		this.checkOutDate = checkOutDate;
 	}
 
 	public int getRoomsRequired() {
@@ -99,6 +105,14 @@ public class OrderHotel {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public List<Integer> getRoomsNumbersAllocated() {
+		return roomsNumbersAllocated;
+	}
+
+	public void setRoomsNumbersAllocated(List<Integer> roomsNumbersAllocated) {
+		this.roomsNumbersAllocated = roomsNumbersAllocated;
 	}
 
 }

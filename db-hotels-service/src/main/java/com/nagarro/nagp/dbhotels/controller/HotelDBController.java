@@ -30,7 +30,7 @@ public class HotelDBController {
 	
 	@GetMapping("")
 	public List<Hotel> searchFlights(
-			@RequestParam(required = false, name = "hoteName") String source,
+			@RequestParam(required = false, name = "hotelName") String source,
 			@RequestParam(required = false, name = "city") String city,
 			@RequestParam(required = false, name = "address") String address
 			) {
@@ -54,7 +54,7 @@ public class HotelDBController {
 	@PostMapping("/book")
 	public OrderHotel bookSeats(@RequestBody OrderHotel booking) {
 		
-		logger.info("/flights/book update flight data");
+		logger.info("/hotels/book update hotel data");
 		OrderHotel bookingUpdate = hotelService.updateRoomStatus(booking);
 		
 		return bookingUpdate;

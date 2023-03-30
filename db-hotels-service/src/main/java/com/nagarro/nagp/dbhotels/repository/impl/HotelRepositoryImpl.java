@@ -17,7 +17,7 @@ public class HotelRepositoryImpl implements HotelRepository {
 	public HotelRepositoryImpl() {
 		this.hotels = new ArrayList<>();
 		this.hotelsIndex = new HashMap<>();
-		
+		createDummyHotels();
 	}
 	
 	@Override
@@ -48,7 +48,7 @@ public class HotelRepositoryImpl implements HotelRepository {
 		Hotel h3 = new Hotel("JW8625","JW Mariot", "Delhi", "Sector 24, Delhi", new ArrayList<>());
 		Hotel h4 = new Hotel("CI3731","Country Inn", "Mumbai", "Model Town, Mumbai", new ArrayList<>());
 		Hotel h5 = new Hotel("SK3288","Sky Hotel", "Chandigarh", "Sector 32, Chandigarh",new ArrayList<>());
-		Hotel h6 = new Hotel("JJ2904","JJ Hotel", "Bangalore", "China Town, Bangalore",new ArrayList<>());
+		Hotel h6 = new Hotel("JJ2904","JJ Hotel", "Amritsar", "Hall Gate, Amritsar",new ArrayList<>());
 		
 		
 		hotels.add(h1);

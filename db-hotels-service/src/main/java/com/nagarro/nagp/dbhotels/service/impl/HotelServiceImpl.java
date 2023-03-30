@@ -29,7 +29,7 @@ public class HotelServiceImpl implements HotelService {
 	@Override
 	public List<Hotel> getAllHotels(HotelSearchParameters hsp) {
 		List<Hotel> allHotels = hotelRepo.getAllHotels();
-		
+
 		if(hsp.getHotelName() == null && 
 				hsp.getCity() == null && 
 				hsp.getAddress() == null
@@ -87,7 +87,7 @@ public class HotelServiceImpl implements HotelService {
 		
 		Hotel h = hotelRepo.getHotelByHotelID(hotelId);
 		
-		List<String> datesRequired = CustomDateUtil.getIndividualDates(booking.getCheckInDate(), booking.getChecOutDate());
+		List<String> datesRequired = CustomDateUtil.getIndividualDates(booking.getCheckInDate(), booking.getCheckOutDate());
 
 		int roomsAvailableCount = 0;
 		List<HotelRoom> roomsAvailableList = new ArrayList<>();
@@ -107,6 +107,7 @@ public class HotelServiceImpl implements HotelService {
 		if(roomsAvailableCount >= roomsRequired) {
 			for(int i = 0; i < roomsRequired; i++) {
 				roomsAvailableList.get(i).getDatesOccupied().addAll(datesRequired);
+				booking.getRoomsNumbersAllocated().add(roomsAvailableList.get(i).getRoomNumber());
 			}
 			booking.setOrderStatus(OrderStatus.CONFIRMED);
 		} else {
