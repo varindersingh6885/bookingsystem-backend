@@ -184,7 +184,7 @@ Logger logger = LogManager.getLogger(HotelServiceImpl.class);
 		
 		OrderHotel booking = JsonSerializerUtil.orderPayload(orderPayload);
 		
-		OrderHotel bookingUpdate = bookSeats(booking);
+		OrderHotel bookingUpdate = bookRooms(booking);
 		if(bookingUpdate.getOrderStatus().equals(OrderStatus.CONFIRMED)) {
 			booking.setRemarks("Your hotel booking is confirmed. Enjoy happy stay.");
 
@@ -197,7 +197,7 @@ Logger logger = LogManager.getLogger(HotelServiceImpl.class);
 		// check seats available
 	}
 	
-	private OrderHotel bookSeats(OrderHotel booking) {
+	private OrderHotel bookRooms(OrderHotel booking) {
 		
 		RestTemplate restClient = new RestTemplate();
 		CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");

@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-03-30T10:30:24.821Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="oEZP-ORLBiQOYn3_fwhu" version="21.1.1" type="device">
+<mxfile host="app.diagrams.net" modified="2023-03-30T16:06:01.204Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="KNa-UyyYcfJ__hSaJrmC" version="21.1.1" type="device">
   <diagram id="skH-N1LjTXYa0d7DtpjA" name="Page-1">
-    <mxGraphModel dx="2438" dy="924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1540" dy="352" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -36,7 +36,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="YlSBNoDHreUcTbOiqiFw-4" value="booking saga orchestrator" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="780" y="240" width="120" height="80" as="geometry" />
+          <mxGeometry x="780" y="260" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="YlSBNoDHreUcTbOiqiFw-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" parent="1" edge="1" target="zlrGjApTkNk8Ka6CCc2n-1" source="YlSBNoDHreUcTbOiqiFw-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -53,7 +53,7 @@
             <mxPoint x="420" y="240" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="L2ALMlDx0BOHGaFCGhI8-3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" target="YlSBNoDHreUcTbOiqiFw-4" edge="1">
+        <mxCell id="L2ALMlDx0BOHGaFCGhI8-3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" parent="1" target="YlSBNoDHreUcTbOiqiFw-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="660" y="240" as="sourcePoint" />
             <mxPoint x="740" y="280" as="targetPoint" />
@@ -76,9 +76,9 @@
             <mxPoint x="270" y="140" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" target="YlSBNoDHreUcTbOiqiFw-4" edge="1" source="clyaD23GlVpxHpIQa8MM-1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" parent="1" target="YlSBNoDHreUcTbOiqiFw-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="620" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="360" as="sourcePoint" />
             <mxPoint x="670" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -122,7 +122,7 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-20" value="Services exposed to api gateway&lt;br&gt;1. Iientity-service&lt;br&gt;2. flights-service&lt;br&gt;3. booking-service&lt;br&gt;4. payments-service" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-20" value="Services exposed to api gateway&lt;br&gt;1. Identity-service&lt;br&gt;2. flights-service&lt;br&gt;3. booking-service&lt;br&gt;4. payments-service&lt;br&gt;5. hotels service" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="330" y="570" width="310" height="110" as="geometry" />
         </mxCell>
         <mxCell id="QiFyikzQO10HzAtInRVE-2" value="Hotels DB" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">

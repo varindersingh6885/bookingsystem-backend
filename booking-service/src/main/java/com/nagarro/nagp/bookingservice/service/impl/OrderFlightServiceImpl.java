@@ -18,6 +18,7 @@ import com.nagarro.nagp.bookingservice.model.OrderStatus;
 import com.nagarro.nagp.bookingservice.repository.OrderFlightRepository;
 import com.nagarro.nagp.bookingservice.service.OrderFlightService;
 import com.nagarro.nagp.bookingservice.util.JsonSerializerUtil;
+import com.nagarro.nagp.bookingservice.util.PriceUtil;
 
 @Service
 public class OrderFlightServiceImpl implements OrderFlightService {
@@ -35,7 +36,7 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		OrderFlight booking = new OrderFlight();
 		booking.setBookingId(UUID.randomUUID().toString());
 		booking.setOrderStatus(OrderStatus.PROCESSING);
-		booking.setAmount(calAmount(order.getSeatNumbers()));
+		booking.setAmount(PriceUtil.calAmount(order.getSeatNumbers()));
 		booking.setUsername(order.getUsername());
 		booking.setFlightId(order.getFlightId());
 		booking.setSeatNumbers(order.getSeatNumbers());
@@ -55,21 +56,10 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		return booking;
 	}
 	
-	private float calAmount(List<Integer> seatNumbers) {
-		float totalAmount = 0;
-		for(Integer seatNum : seatNumbers) {
-			if(seatNum <= 20) {
-				totalAmount += 1000;
-			} else {
-				totalAmount += 2500;
-			}
-		}
-		return totalAmount;
-	}
 	
 	@JmsListener(destination = "UpdateBookingFlightSeatsNotAvailable")
 	public void updateBookingFlightSeatsNotAvailable(String orderPayload) {
-		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayloadFlight(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
 		
@@ -86,7 +76,7 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		
 		logger.info("ActiveMqEvent UpdateBookingFlightBookingConfirmed");
 
-		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayloadFlight(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
 		
@@ -98,11 +88,11 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 	}
 	
 	@JmsListener(destination = "UpdateBookingFlightPaymentPending")
-	public void seatsAvailableInitiatePaymentRequest(String orderPayload) {
+	public void updateBookingFlightPaymentPending(String orderPayload) {
 		
 		logger.info("ActiveMqEvent UpdateBookingFlightPaymentPending");
 		
-		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayloadFlight(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
 		
@@ -117,7 +107,7 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		
 		logger.info("ActiveMqEvent OrderFlightPaymentReceivedUpdate");
 		
-		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayloadFlight(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
 		
@@ -137,7 +127,7 @@ public class OrderFlightServiceImpl implements OrderFlightService {
 		
 		logger.info("ActiveMqEvent OrderFlightPaymentFailedUpdate");
 		
-		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayload(orderPayload);
+		OrderFlight bookingUpdate = JsonSerializerUtil.orderPayloadFlight(orderPayload);
 		
 		OrderFlight booking = orderFlightRepo.getFlightOrder(bookingUpdate.getBookingId());
 		

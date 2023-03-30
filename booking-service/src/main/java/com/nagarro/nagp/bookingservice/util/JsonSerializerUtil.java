@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.nagarro.nagp.bookingservice.model.OrderFlight;
+import com.nagarro.nagp.bookingservice.model.OrderHotel;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -28,20 +29,36 @@ public class JsonSerializerUtil {
     return retVal;
   }
 
-  public static com.nagarro.nagp.bookingservice.model.OrderFlight orderPayload(String respData) {
-	    OrderFlight order = null;
-	    try {
-	    	
-	    	order = mapper.readValue(respData, OrderFlight.class);
-	     
-	   /*   order = objectMapper
-	          .readValue(respData, new TypeReference<Order>() {
-	          });*/
+  public static OrderFlight orderPayloadFlight(String respData) {
+    OrderFlight order = null;
+    try {
+    	
+    	order = mapper.readValue(respData, OrderFlight.class);
+     
+   /*   order = objectMapper
+          .readValue(respData, new TypeReference<Order>() {
+          });*/
 
-	    } catch (Exception e) {
-	      log.error(e.getMessage());
-	    }
-	    return order;
-	  }
+    } catch (Exception e) {
+      log.error(e.getMessage());
+    }
+    return order;
+  }
+  
+  public static OrderHotel orderPayloadHotel(String respData) {
+	  OrderHotel order = null;
+    try {
+    	
+    	order = mapper.readValue(respData, OrderHotel.class);
+     
+   /*   order = objectMapper
+          .readValue(respData, new TypeReference<Order>() {
+          });*/
+
+    } catch (Exception e) {
+      log.error(e.getMessage());
+    }
+    return order;
+  }
 
 }
