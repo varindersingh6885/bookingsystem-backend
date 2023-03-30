@@ -12,6 +12,13 @@ spring:
          filters:
            - AuthenticationFilter
 
+       - id: hotels-service
+         uri: lb://HOTELS-SERVICE
+         predicates:
+           - Path=/hotels/**
+         filters:
+           - AuthenticationFilter
+
 
        - id: booking-service
          uri: lb://BOOKING-SERVICE

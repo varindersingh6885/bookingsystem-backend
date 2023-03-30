@@ -41,7 +41,7 @@ public class FlightServiceImpl implements FlightService {
 	
 	@Override
 	public List<FlightWithoutSeatsData> getAllFlights(FlightSearchParameters fsp) {
-		// TODO Auto-generated method stub
+
 		RestTemplate restClient = new RestTemplate();
         
         CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
@@ -78,7 +78,7 @@ public class FlightServiceImpl implements FlightService {
         CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
         
         Flight flight = circuitBreaker.run(() -> {
-            System.out.println("Attempt");
+//            System.out.println("Attempt");
             List<ServiceInstance> dbFlightsService = discoveryClient.getInstances("DB-FLIGHTS");
             String dbFlightsUri = dbFlightsService.get(0).getUri().toString();
             
@@ -98,7 +98,7 @@ public class FlightServiceImpl implements FlightService {
 	}
 	
 	@JmsListener(destination = "OrderFlightCheckSeatsAvailable")
-	public void newFlightOrderRequestReceived(String orderPayload) {
+	public void orderFlightCheckSeatsAvailable(String orderPayload) {
 		
 		logger.info("ActiveMqEvent OrderFlightCheckSeatsAvailable");
 		OrderFlight booking = JsonSerializerUtil.orderPayload(orderPayload);
@@ -175,7 +175,7 @@ public class FlightServiceImpl implements FlightService {
 		return true;
 	}
 	
-private OrderFlight bookSeats(OrderFlight booking) {
+	private OrderFlight bookSeats(OrderFlight booking) {
 		
 		RestTemplate restClient = new RestTemplate();
 		CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");

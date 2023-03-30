@@ -1,15 +1,11 @@
 package com.nagarro.nagp.dbhotels.service.impl;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nagarro.nagp.dbhotels.constants.HotelRoomStatus;
 import com.nagarro.nagp.dbhotels.dto.HotelSearchParameters;
 import com.nagarro.nagp.dbhotels.dto.OrderHotel;
 import com.nagarro.nagp.dbhotels.dto.OrderStatus;

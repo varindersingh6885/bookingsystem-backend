@@ -1,34 +1,31 @@
-package com.nagarro.nagp.dbhotels.model;
+package com.nagarro.nagp.hotelsservice.dto;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.nagarro.nagp.hotelsservice.model.Hotel;
 
-import com.nagarro.nagp.dbhotels.constants.HotelRoomPrice;
-
-
-public class Hotel {
+public class HotelWithoutRoomsData {
 	private String hotelId;
 	private String hotelName;
 	private String city;
 	private String address;
-	List<HotelRoom> rooms;
 	
-	public Hotel() {
-		this.rooms = new ArrayList<>();
-		addHotelRooms();
+	public HotelWithoutRoomsData() {
 	}
 	
-	public Hotel(String hotelId, String hotelName, String city, String address, List<HotelRoom> rooms) {
+	public HotelWithoutRoomsData(String hotelId, String hotelName, String city, String address) {
 		super();
 		this.hotelId = hotelId;
 		this.hotelName = hotelName;
 		this.city = city;
 		this.address = address;
-		this.rooms = rooms;
-		
-		addHotelRooms();
 	}
 	
+	public HotelWithoutRoomsData(Hotel h) {
+		this.hotelId = h.getHotelId();
+		this.hotelName = h.getHotelName();
+		this.city = h.getCity();
+		this.address = h.getAddress();
+	}
+
 	public String getHotelId() {
 		return hotelId;
 	}
@@ -45,14 +42,6 @@ public class Hotel {
 		this.hotelName = hotelName;
 	}
 
-	public List<HotelRoom> getRooms() {
-		return rooms;
-	}
-
-	public void setRooms(List<HotelRoom> rooms) {
-		this.rooms = rooms;
-	}
-	
 	public String getAddress() {
 		return address;
 	}
@@ -69,13 +58,4 @@ public class Hotel {
 		this.city = city;
 	}
 
-	private void addHotelRooms() {
-		
-		for(int i = 1; i <= 30; i++) {
-			HotelRoom r = new HotelRoom(i, HotelRoomPrice.LUXURY_PRICE);
-			rooms.add(r);
-		}
-		
-	}
-	
 }

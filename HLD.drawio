@@ -1,28 +1,28 @@
-<mxfile host="app.diagrams.net" modified="2023-03-29T12:20:18.091Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="RcRcV58Sk-CnZSn35VbB" version="21.1.1" type="device">
+<mxfile host="app.diagrams.net" modified="2023-03-30T10:30:24.821Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="oEZP-ORLBiQOYn3_fwhu" version="21.1.1" type="device">
   <diagram id="skH-N1LjTXYa0d7DtpjA" name="Page-1">
-    <mxGraphModel dx="1444" dy="675" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2438" dy="924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="zlrGjApTkNk8Ka6CCc2n-1" value="flights service" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="780" width="120" height="80" as="geometry" />
+          <mxGeometry x="540" y="80" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="zlrGjApTkNk8Ka6CCc2n-2" value="Flights DB" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1140" width="120" height="80" as="geometry" />
+          <mxGeometry x="780" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="zlrGjApTkNk8Ka6CCc2n-3" value="Web brower/client" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry y="200" width="120" height="80" as="geometry" />
+          <mxGeometry x="-40" y="260" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="zlrGjApTkNk8Ka6CCc2n-4" value="service registery" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1030" y="120" width="120" height="80" as="geometry" />
+          <mxGeometry x="1000" y="80" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="zlrGjApTkNk8Ka6CCc2n-5" value="api gateway" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="180" y="200" width="120" height="80" as="geometry" />
+          <mxGeometry x="180" y="260" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="A_0y_IQ02Vp7g4dw8pBq-1" value="Auth/ Identity service" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="180" y="40" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="YlSBNoDHreUcTbOiqiFw-2" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;search flights&lt;br&gt;update flights&lt;/font&gt;" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;" parent="1" edge="1">
+        <mxCell id="YlSBNoDHreUcTbOiqiFw-2" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;search flights&lt;br&gt;&lt;/font&gt;" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.668;exitY=0.017;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;exitPerimeter=0;" parent="1" edge="1" target="zlrGjApTkNk8Ka6CCc2n-1" source="zlrGjApTkNk8Ka6CCc2n-5">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="292.42640687119274" y="211.7157287525382" as="sourcePoint" />
             <mxPoint x="780" y="40" as="targetPoint" />
@@ -36,9 +36,9 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="YlSBNoDHreUcTbOiqiFw-4" value="booking saga orchestrator" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="780" y="200" width="120" height="80" as="geometry" />
+          <mxGeometry x="780" y="240" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="YlSBNoDHreUcTbOiqiFw-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" parent="1" edge="1">
+        <mxCell id="YlSBNoDHreUcTbOiqiFw-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" parent="1" edge="1" target="zlrGjApTkNk8Ka6CCc2n-1" source="YlSBNoDHreUcTbOiqiFw-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="840" y="200.0000000000001" as="sourcePoint" />
             <mxPoint x="840" y="80.00000000000011" as="targetPoint" />
@@ -47,84 +47,109 @@
         <mxCell id="YlSBNoDHreUcTbOiqiFw-6" value="booking service&lt;br&gt;check status of &lt;br&gt;order" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="540" y="200" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="YlSBNoDHreUcTbOiqiFw-7" value="Create new booking&lt;br&gt;&lt;br&gt;Check booking status" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;" parent="1" source="zlrGjApTkNk8Ka6CCc2n-5" target="YlSBNoDHreUcTbOiqiFw-6" edge="1">
+        <mxCell id="YlSBNoDHreUcTbOiqiFw-7" value="Create new booking&lt;br&gt;&lt;br&gt;Check booking status" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;exitX=0.953;exitY=0.282;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="zlrGjApTkNk8Ka6CCc2n-5" target="YlSBNoDHreUcTbOiqiFw-6" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="370" y="290" as="sourcePoint" />
+            <mxPoint x="300" y="280" as="sourcePoint" />
             <mxPoint x="420" y="240" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="L2ALMlDx0BOHGaFCGhI8-3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" parent="1" source="YlSBNoDHreUcTbOiqiFw-6" target="YlSBNoDHreUcTbOiqiFw-4" edge="1">
+        <mxCell id="L2ALMlDx0BOHGaFCGhI8-3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" target="YlSBNoDHreUcTbOiqiFw-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="630" y="330" as="sourcePoint" />
-            <mxPoint x="680" y="280" as="targetPoint" />
+            <mxPoint x="660" y="240" as="sourcePoint" />
+            <mxPoint x="740" y="280" as="targetPoint" />
+            <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-1" value="payments-service" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="350" width="120" height="80" as="geometry" />
+        <mxCell id="clyaD23GlVpxHpIQa8MM-1" value="payments-service" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="320" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-3" value="process payments" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;" edge="1" parent="1" source="clyaD23GlVpxHpIQa8MM-1" target="zlrGjApTkNk8Ka6CCc2n-5">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-3" value="process payments" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;" parent="1" source="clyaD23GlVpxHpIQa8MM-1" target="zlrGjApTkNk8Ka6CCc2n-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="610" y="260" as="sourcePoint" />
             <mxPoint x="660" y="210" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-4" value="register new user&lt;br&gt;validate user" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;" edge="1" parent="1" source="zlrGjApTkNk8Ka6CCc2n-5" target="A_0y_IQ02Vp7g4dw8pBq-1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-4" value="register new user&lt;br&gt;validate user" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;" parent="1" source="zlrGjApTkNk8Ka6CCc2n-5" target="A_0y_IQ02Vp7g4dw8pBq-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="220" y="190" as="sourcePoint" />
             <mxPoint x="270" y="140" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" edge="1" parent="1" target="YlSBNoDHreUcTbOiqiFw-4">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" target="YlSBNoDHreUcTbOiqiFw-4" edge="1" source="clyaD23GlVpxHpIQa8MM-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="620" y="390" as="sourcePoint" />
             <mxPoint x="670" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-7" value="&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpFirst&quot;&gt;&lt;span style=&quot;background-color: initial; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt; text-indent: -18pt;&quot;&gt;apigateway&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpFirst&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt; text-indent: -18pt; background-color: initial;&quot;&gt;identity-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;db-flights-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;flights-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;booking-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;background-color: initial; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt; text-indent: -18pt;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; booking-saga-orchestrator&lt;/span&gt;&lt;/p&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 12pt; background-color: initial;&quot;&gt;payments-service&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="980" y="290" width="220" height="260" as="geometry" />
+        <mxCell id="clyaD23GlVpxHpIQa8MM-7" value="&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpFirst&quot;&gt;&lt;span style=&quot;background-color: initial; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt; text-indent: -18pt;&quot;&gt;apigateway&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpFirst&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt; text-indent: -18pt; background-color: initial;&quot;&gt;identity-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;db-flights-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;flights-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;booking-service&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color); text-indent: -18pt;&quot; class=&quot;MsoListParagraphCxSpMiddle&quot;&gt;&lt;span style=&quot;background-color: initial; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt; text-indent: -18pt;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; booking-saga-orchestrator&lt;/span&gt;&lt;/p&gt;&lt;span style=&quot;border-color: var(--border-color); line-height: 17.12px; font-family: &amp;quot;Times New Roman&amp;quot;, serif; font-size: 12pt;&quot; lang=&quot;EN-US&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 12pt; background-color: initial;&quot;&gt;payments-service&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="950" y="250" width="220" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-9" value="discovery server clients" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="clyaD23GlVpxHpIQa8MM-7" target="zlrGjApTkNk8Ka6CCc2n-4">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-9" value="discovery server clients" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="clyaD23GlVpxHpIQa8MM-7" target="zlrGjApTkNk8Ka6CCc2n-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1330" y="320" as="sourcePoint" />
-            <mxPoint x="1150" y="260" as="targetPoint" />
+            <mxPoint x="1300" y="280" as="sourcePoint" />
+            <mxPoint x="1120" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-12" value="Open Route&lt;br&gt;does not need &lt;br&gt;authorization" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;" edge="1" parent="1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-12" value="Open Route&lt;br&gt;does not need &lt;br&gt;authorization" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="40" y="360" as="sourcePoint" />
-            <mxPoint x="200" y="360" as="targetPoint" />
+            <mxPoint x="40" y="400" as="sourcePoint" />
+            <mxPoint x="200" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-13" value="Protected Route&lt;br&gt;Needs a valid Token" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;" edge="1" parent="1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-13" value="Protected Route&lt;br&gt;Needs a valid Token" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="40" y="440" as="sourcePoint" />
-            <mxPoint x="200" y="440" as="targetPoint" />
+            <mxPoint x="40" y="480" as="sourcePoint" />
+            <mxPoint x="200" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-16" value="Asynchronous&lt;br&gt;Communication&lt;br&gt;Routes" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" edge="1" parent="1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-16" value="Asynchronous&lt;br&gt;Communication&lt;br&gt;Routes" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="40" y="520" as="sourcePoint" />
-            <mxPoint x="200" y="520" as="targetPoint" />
+            <mxPoint x="40" y="560" as="sourcePoint" />
+            <mxPoint x="200" y="560" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-18" value="Synchronous&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Communication&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;with circuit breaker&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;pattern implemented" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#a20025;strokeColor=#6F0000;strokeWidth=4;" edge="1" parent="1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-18" value="Synchronous&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Communication&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;with circuit breaker&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;pattern implemented" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#a20025;strokeColor=#6F0000;strokeWidth=4;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="40" y="600" as="sourcePoint" />
-            <mxPoint x="200" y="600" as="targetPoint" />
+            <mxPoint x="40" y="640" as="sourcePoint" />
+            <mxPoint x="200" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-19" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#a20025;strokeColor=#6F0000;strokeWidth=4;" edge="1" parent="1" source="zlrGjApTkNk8Ka6CCc2n-2" target="zlrGjApTkNk8Ka6CCc2n-1">
+        <mxCell id="clyaD23GlVpxHpIQa8MM-19" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fillColor=#a20025;strokeColor=#6F0000;strokeWidth=4;" parent="1" source="zlrGjApTkNk8Ka6CCc2n-2" target="zlrGjApTkNk8Ka6CCc2n-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="630" y="290" as="sourcePoint" />
             <mxPoint x="680" y="240" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="1040" y="40" />
-            </Array>
+            <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clyaD23GlVpxHpIQa8MM-20" value="Services exposed to api gateway&lt;br&gt;1. Iientity-service&lt;br&gt;2. flights-service&lt;br&gt;3. booking-service&lt;br&gt;4. payments-service" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="540" y="500" width="310" height="110" as="geometry" />
+        <mxCell id="clyaD23GlVpxHpIQa8MM-20" value="Services exposed to api gateway&lt;br&gt;1. Iientity-service&lt;br&gt;2. flights-service&lt;br&gt;3. booking-service&lt;br&gt;4. payments-service" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="330" y="570" width="310" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="QiFyikzQO10HzAtInRVE-2" value="Hotels DB" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="520" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QiFyikzQO10HzAtInRVE-3" value="hotels service" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QiFyikzQO10HzAtInRVE-4" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fillColor=#a20025;strokeColor=#6F0000;strokeWidth=4;" edge="1" parent="1" source="QiFyikzQO10HzAtInRVE-2" target="QiFyikzQO10HzAtInRVE-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1140" y="439.33" as="sourcePoint" />
+            <mxPoint x="900" y="439.33" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QiFyikzQO10HzAtInRVE-5" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;search hotels&lt;br&gt;&lt;/font&gt;" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.662;exitY=0.973;exitDx=0;exitDy=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;entryX=0;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="zlrGjApTkNk8Ka6CCc2n-5" target="QiFyikzQO10HzAtInRVE-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="541.72" as="sourcePoint" />
+            <mxPoint x="520" y="450" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QiFyikzQO10HzAtInRVE-6" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=3;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="QiFyikzQO10HzAtInRVE-3" target="YlSBNoDHreUcTbOiqiFw-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="400" as="sourcePoint" />
+            <mxPoint x="1000" y="320" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

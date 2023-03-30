@@ -2,6 +2,8 @@ package com.nagarro.nagp.dbhotels.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -30,24 +32,26 @@ public class HotelDBController {
 	
 	@GetMapping("")
 	public List<Hotel> searchFlights(
-			@RequestParam(required = false, name = "hotelName") String source,
+			@RequestParam(required = false, name = "hotelName") String hotelName,
 			@RequestParam(required = false, name = "city") String city,
 			@RequestParam(required = false, name = "address") String address
 			) {
 	
 		logger.info("/hotels get hotels db-hotels-service");
-		List<Hotel> hotels = hotelService.getAllHotels(new HotelSearchParameters(source, city, address));
+		List<Hotel> hotels = hotelService.getAllHotels(new HotelSearchParameters(hotelName, city, address));
 		
 		return hotels;
 	}
 	
 	@GetMapping("/{id}")
-	public Hotel getHotelById(@PathVariable("id") String hotelId) {
+	public Hotel getHotelById(@PathVariable("id") String hotelId, HttpServletResponse res) {
 //		System.out.println(flightId);
 		
 		logger.info("/hotels/{id} get hotel by hotelId db-hotels-service");
 		Hotel h = hotelService.getHotelByHotelId(hotelId);
-		
+		if(h == null) {
+			res.setStatus(404);
+		}
 		return h;
 	}
 	

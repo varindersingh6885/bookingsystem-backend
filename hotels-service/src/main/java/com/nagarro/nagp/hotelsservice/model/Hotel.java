@@ -1,10 +1,7 @@
-package com.nagarro.nagp.dbhotels.model;
+package com.nagarro.nagp.hotelsservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.nagarro.nagp.dbhotels.constants.HotelRoomPrice;
-
 
 public class Hotel {
 	private String hotelId;
@@ -15,7 +12,6 @@ public class Hotel {
 	
 	public Hotel() {
 		this.rooms = new ArrayList<>();
-		addHotelRooms();
 	}
 	
 	public Hotel(String hotelId, String hotelName, String city, String address, List<HotelRoom> rooms) {
@@ -26,7 +22,6 @@ public class Hotel {
 		this.address = address;
 		this.rooms = rooms;
 		
-		addHotelRooms();
 	}
 	
 	public String getHotelId() {
@@ -69,13 +64,4 @@ public class Hotel {
 		this.city = city;
 	}
 
-	private void addHotelRooms() {
-		
-		for(int i = 1; i <= 30; i++) {
-			HotelRoom r = new HotelRoom(i, HotelRoomPrice.LUXURY_PRICE);
-			rooms.add(r);
-		}
-		
-	}
-	
 }
