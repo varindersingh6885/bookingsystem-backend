@@ -172,6 +172,8 @@ Logger logger = LogManager.getLogger(HotelServiceImpl.class);
 			}
 		}
 		if(roomsAvailableCount < roomsRequired) {
+			booking.setRemarks("Rooms note available!");
+			booking.setOrderStatus(OrderStatus.UNCONFIRMED);
 			return false;
 		}
 		return true;
