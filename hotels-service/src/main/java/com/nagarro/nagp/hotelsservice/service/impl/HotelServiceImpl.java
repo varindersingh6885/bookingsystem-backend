@@ -120,6 +120,7 @@ Logger logger = LogManager.getLogger(HotelServiceImpl.class);
 					"?amount="+booking.getAmount());
 			jmsTemplate.convertAndSend("RoomsAvailableInitiatePaymentRequest",JsonSerializerUtil.serialize(booking));
 		} else {
+			System.out.println("note available " +  booking.getRemarks());
 			jmsTemplate.convertAndSend("OrderHotelCheckRoomsAvailableFail",JsonSerializerUtil.serialize(booking));
 		}
 		// check seats available
@@ -172,7 +173,7 @@ Logger logger = LogManager.getLogger(HotelServiceImpl.class);
 			}
 		}
 		if(roomsAvailableCount < roomsRequired) {
-			booking.setRemarks("Rooms note available!");
+			booking.setRemarks("Rooms not available!");
 			booking.setOrderStatus(OrderStatus.UNCONFIRMED);
 			return false;
 		}
